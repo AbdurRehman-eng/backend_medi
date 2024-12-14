@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 5000; // Use PORT from environment variables if available
 
 app.use(cors()); // To allow cross-origin requests
 app.use(express.json()); // To parse JSON data
@@ -70,7 +69,5 @@ app.get("/api/medicines", (req, res) => {
   res.status(200).json(medicines);
 });
 
-// Start the server
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Export the app for Vercel
+module.exports = app;
